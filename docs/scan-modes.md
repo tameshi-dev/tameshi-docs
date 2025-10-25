@@ -1,6 +1,6 @@
 # Scan Modes
 
-Tameshi offers three complementary analysis modes that can be used independently or combined.
+Tameshi offers four complementary analysis modes that can be used independently or combined.
 
 ## Overview
 
@@ -8,7 +8,8 @@ Tameshi offers three complementary analysis modes that can be used independently
 |------|-------|-----------|--------------------------|----------|
 | Source | <1s | Medium | ✅ Yes | Real-time feedback, CI/CD |
 | IR | ~3-5s | High | ⚠️ Requires valid syntax | Pre-deployment audits |
-| Combined | ~10-15s | Higher | ⚠️ Depends on LLM input | Comprehensive reviews |
+| Call Graph | ~2-3s | High | ✅ Yes | Cross-function flow analysis |
+| Combined | ~10-20s | Highest | ⚠️ Depends on LLM input | Comprehensive reviews |
 
 ## Source-Level Scanning
 
@@ -98,6 +99,52 @@ The transformation to IR happens transparently.
 
 ---
 
+## Call Graph Analysis
+
+Control flow and cross-function vulnerability detection via Traverse.
+
+### Features
+
+- Analyzes function call relationships and control flow
+- Detects cross-function reentrancy patterns
+- Identifies unreachable code and dead paths
+- Tracks state modifications across function boundaries
+- Works on syntactically valid Solidity (no compilation required)
+
+### How It Works
+
+Tameshi uses [Traverse](https://github.com/calltrace/traverse) to generate call graphs from Solidity source. This enables:
+- Function-to-function dependency analysis
+- Call chain pattern detection
+- Cross-contract call flow tracking
+- Vulnerability propagation across functions
+
+Call graphs provide a complementary view to AST and IR, focusing on inter-procedural analysis.
+
+### When to Use
+
+**Good for:**
+- Cross-function reentrancy detection
+- Complex multi-contract interactions
+- Understanding call flow and dependencies
+- Identifying indirect vulnerabilities
+
+**Trade-offs:**
+- Requires valid Solidity syntax (but no compilation)
+- Analysis time ~2-3 seconds per contract
+- Most effective on complete codebases
+
+### Example
+
+```bash
+# Call graph scanners run with deterministic suite
+tameshi scan run -i MyContract.sol --suite deterministic
+```
+
+Call graphs are generated transparently alongside AST and IR.
+
+---
+
 ## Combined Analysis (Deterministic + LLM)
 
 Runs all scanners together with optional LLM validation.
@@ -106,15 +153,17 @@ Runs all scanners together with optional LLM validation.
 
 1. **14 source scanners** run on AST (fast, works on incomplete code)
 2. **10 IR scanners** run on ThalIR (semantic, requires valid syntax)
-3. **1 LLM scanner** (optional) analyzes code for all vulnerability types
-4. **Correlation engine** links related findings across scanners
+3. **Call graph scanners** run on Traverse representation (cross-function analysis)
+4. **1 LLM scanner** (optional) analyzes code for all vulnerability types
+5. **Correlation engine** links related findings across scanners
 
 ### Benefits
 
-- **Complete coverage** - Different scanners catch different issues
+- **Complete coverage** - Different scanners catch different issues across multiple representations
 - **Higher confidence** - Findings confirmed by multiple scanners get higher scores
+- **Cross-function detection** - Call graphs reveal vulnerabilities spanning multiple functions
 - **Novel patterns** - LLM finds issues deterministic scanners miss
-- **Reproducible baseline** - Deterministic scanners (14+10) produce consistent results
+- **Reproducible baseline** - Deterministic scanners (14+10+graph) produce consistent results
 
 ### When to Use
 

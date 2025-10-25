@@ -21,7 +21,7 @@ features:
   - icon:
       src: /icons/ai-fusion.svg
     title: Multi-Tier Analysis
-    details: 14 source + 10 IR + 1 LLM scanner working together. Optional AI validation for higher confidence findings
+    details: 14 source + 10 IR + call graph + 1 LLM scanner. AST, ThalIR, and Traverse representations for comprehensive detection
   - icon:
       src: /icons/lightning.svg
     title: Fast Analysis
@@ -44,6 +44,7 @@ Tameshi is a real-time vulnerability scanner for Solidity smart contracts. It co
 
 - **Source-level scanning** - Fast AST analysis, works on incomplete/invalid code (<1s)
 - **IR-level scanning** (via ThalIR) - Semantic analysis through intermediate representation
+- **Call graph analysis** (via Traverse) - Control flow and cross-function vulnerability detection
 - **LLM-powered analysis** (optional) - AI validates and augments deterministic findings
 
 **Works on incomplete code**: Tree-sitter parser handles syntactically invalid Solidity during active development. No compilation required. Get security feedback as you type.
@@ -63,13 +64,16 @@ graph LR
     A[Solidity Source] --> B[Tree-sitter Parser]
     B --> C[AST]
     C --> D[Source Scanners<br/>14 detectors]
-    D --> E[Findings]
-    C --> F[ThalIR Transform]
-    F --> G[IR Scanners<br/>10 detectors]
-    G --> E
-    E --> H[LLM Scanner<br/>optional]
-    H --> I[Finding Correlation]
-    I --> J[Report]
+    D --> F[Findings]
+    C --> E[ThalIR Transform]
+    E --> G[IR Scanners<br/>10 detectors]
+    G --> F
+    C --> H[Traverse Call Graph]
+    H --> I[Graph Scanners]
+    I --> F
+    F --> J[LLM Scanner<br/>optional]
+    J --> K[Finding Correlation]
+    K --> L[Report]
 ```
 
 ## Key Capabilities
@@ -84,9 +88,10 @@ Fast scans (<1s) on code under construction:
 
 ### Multi-Tier Detection
 
-**Three complementary analysis layers**:
+**Four complementary analysis layers**:
 - 14 source-level scanners for fast AST analysis
-- 10 IR-level scanners for semantic precision
+- 10 IR-level scanners for semantic precision via ThalIR
+- Call graph scanners for control flow and cross-function analysis via Traverse
 - 1 LLM scanner (optional) for validation and novel pattern discovery
 - Finding correlation engine links related issues across scanners
 

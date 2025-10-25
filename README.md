@@ -46,13 +46,14 @@ docs/
 
 ## Features
 
-- **25 vulnerability scanners**: Reentrancy, access control, integer overflows, DoS, dangerous operations
-- **Multi-tier analysis**: 14 source + 10 IR + 1 LLM scanner
+- **25+ vulnerability scanners**: Reentrancy, access control, integer overflows, DoS, dangerous operations
+- **Multi-representation analysis**: AST, ThalIR, and Traverse call graphs
+- **Four analysis tiers**: 14 source + 10 IR + call graph + 1 LLM scanner
 - **Works on incomplete code**: Tree-sitter parser, no compilation required, <1s scans
 - **VSCode integration**: Real-time inline diagnostics, findings triage panel
 - **SARIF export**: GitHub Code Scanning, Azure DevOps, SonarQube
 
-Performance: <1s for source scanning, ~3-5s for IR analysis
+Performance: <1s for source scanning, ~2-3s for call graphs, ~3-5s for IR analysis
 
 ## Tech Stack
 
