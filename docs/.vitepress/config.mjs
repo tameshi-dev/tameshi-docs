@@ -24,7 +24,7 @@ export default withMermaid(
         { text: 'Get Started', link: '/install' },
         { text: 'VSCode', link: '/vscode' },
         { text: 'CLI', link: '/cli' },
-        { text: 'GitHub', link: 'https://github.com/tameshi-dev' }
+        { text: 'GitHub', link: 'https://github.com/tameshi-dev/tameshi' }
       ],
 
       sidebar: [
@@ -60,7 +60,7 @@ export default withMermaid(
       ],
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/tameshi-dev' }
+        { icon: 'github', link: 'https://github.com/tameshi-dev/tameshi' }
       ],
 
       footer: {
