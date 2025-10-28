@@ -8,7 +8,7 @@ The VSCode extension is the primary way to use Tameshi for real-time security an
 
 ### From Marketplace
 
-Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=tameshi.tameshi-vscode) or search "Tameshi Security Scanner" in the Extensions view.
+Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=GianlucaBrigandi.tameshi-vscode) or search "Tameshi Security Scanner" in the Extensions view.
 
 **First Run:**
 
@@ -24,7 +24,7 @@ Manual download: Command Palette → `Tameshi: Download Language Server`
 For development or pre-release versions:
 
 ```bash
-code --install-extension tameshi-vscode-0.1.8.vsix
+code --install-extension tameshi-vscode-<version>.vsix
 ```
 
 ### Verify Installation

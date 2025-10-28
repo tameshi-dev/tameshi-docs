@@ -13,7 +13,7 @@ The Tameshi VSCode extension provides:
 
 ## Installation
 
-Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=tameshi.tameshi-vscode) or search "Tameshi Security Scanner" in the Extensions view.
+Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=GianlucaBrigandi.tameshi-vscode) or search "Tameshi Security Scanner" in the Extensions view.
 
 The LSP server is automatically downloaded on first activation. See the [Installation Guide](/install#install-vscode-extension-recommended) for details.
 

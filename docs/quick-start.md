@@ -4,7 +4,7 @@ Scan your first smart contract in 5 minutes using the VSCode extension.
 
 ## Prerequisites
 
-Install the [Tameshi VSCode Extension](https://marketplace.visualstudio.com/items?itemName=tameshi.tameshi-vscode) from the marketplace.
+Install the [Tameshi VSCode Extension](https://marketplace.visualstudio.com/items?itemName=GianlucaBrigandi.tameshi-vscode) from the marketplace.
 
 ## 1. Create a Sample Contract
 
