@@ -36,6 +36,10 @@ features:
     details: Inline diagnostics, findings triage, and smart AI rescan as you type. No manual scan triggers needed
 ---
 
+<div align="center" style="margin: 2rem 0;">
+  <iframe width="960" height="540" src="https://www.youtube.com/embed/gC6KORbN1pE" title="Tameshi Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width: 100%; border-radius: 8px;"></iframe>
+</div>
+
 ## What is Tameshi?
 
 **Tameshi** (試し, Japanese: "test" or "trial") reflects the practice of testing a blade's sharpness. Like a swordsmith meticulously examining their work, Tameshi tests smart contracts with precision and thoroughness.
