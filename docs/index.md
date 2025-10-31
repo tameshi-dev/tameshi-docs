@@ -37,7 +37,7 @@ features:
 ---
 
 <div align="center" style="margin: 2rem 0;">
-  <iframe width="960" height="540" src="https://www.youtube.com/embed/gC6KORbN1pE" title="Tameshi Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width: 100%; border-radius: 8px;"></iframe>
+  <iframe width="960" height="540" src="https://www.youtube.com/embed/gC6KORbN1pE?autoplay=1&mute=1&loop=1&playlist=gC6KORbN1pE" title="Tameshi Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width: 100%; border-radius: 8px;"></iframe>
 </div>
 
 ## What is Tameshi?
